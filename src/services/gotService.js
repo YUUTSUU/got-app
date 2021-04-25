@@ -1,4 +1,5 @@
-class GotService {
+export default class GotService {
+  
   constructor() {
     this._apiBase = 'https://www.anapioficeandfire.com/api';
   }
@@ -13,7 +14,7 @@ class GotService {
   }
   
   async getAllCharacters() {
-    const res = await this.getResource('/characters?page=5&pageSize=10');
+    const res = await this.getResource('/characters');
     return res.map(this._transformCharacter)
   }
   async getCharacter(id) {
@@ -70,4 +71,4 @@ class GotService {
   }
 }
 
-export default GotService;
+// export default GotService;

@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import './itemList.css';
+import gotService from '../../services/gotService.js'
+
 export default class ItemList extends Component {
+
+  gotService = new gotService();
+
+  state = {
+    charList: null
+  }
 
   render() {
     return (
