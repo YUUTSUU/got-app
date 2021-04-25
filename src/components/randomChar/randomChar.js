@@ -10,12 +10,15 @@ export default class RandomChar extends React.Component {
       char: {}
     }
     this.updateChar();
+    this.onCharLoaded = this.onCharLoaded.bind(this);
   }
-  
-  
-  
-  onCharLoaded = (char) => {
-    this.setState({char})
+    
+  onCharLoaded() {
+    this.setState(() => {
+      return {
+        char: this.state.char
+      }
+    })
   }
 
   updateChar() {
