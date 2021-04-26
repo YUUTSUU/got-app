@@ -1,4 +1,9 @@
 img {
-  margin-bottom: 13px;
   width: 100%;
+}
+
+.error {
+  padding: 13px;
+  color: #fff;
+  background-color: rgb(37, 37, 37);
 }

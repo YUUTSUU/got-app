@@ -9,7 +9,7 @@ export default class RandomChar extends React.Component {
   gotService = new gotService();
 
   state = {
-    char: {},
+    char: null,
     loading: true,
     error: false
   }
@@ -25,7 +25,7 @@ export default class RandomChar extends React.Component {
 
   onCharLoaded = (char) => {
     this.setState({
-      char,
+      char: char,
       loading: false
     });
   }
@@ -45,17 +45,17 @@ export default class RandomChar extends React.Component {
   }
 
   render() {
-    const {name, gender, born, died, culture} = this.state.char; 
     if (this.state.loading) {
       return <Spinner/>
     }
     if (this.state.error) {
       return <div className="random-block rounded"><ErrorMessage/></div>
     }
-
+    const {name, gender, born, died, culture} = this.state.char; 
+    
     return (
       <div className="random-block rounded">
-        <h4>Character: {name ? name : 'Нет данных'}</h4>
+        <h4>Random Character: {name ? name : 'Нет данных'}</h4>
         <ul className="list-group list-group-flush">
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Gender </span>

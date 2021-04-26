@@ -2,14 +2,21 @@ import React from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header/header.js';
 import RandomChar from '../randomChar/randomChar.js';
-import ItemList from '../itemList/itemList.js';
-import CharDetails from '../charDetails/charDetails.js';
+import CharacterPage from '../characterPage/characterPage.js';
+import ErrorMessage from '../errorMessage/errorMessage.js';
 import './app.css';
 
 export default class App extends React.Component{
   
   state = {
-    button: true
+    button: true,
+    error: false
+  }
+
+  componentDidCatch() {
+    this.setState({
+      error: true
+    })
   }
 
   onButton = () => {
@@ -20,6 +27,9 @@ export default class App extends React.Component{
 
   render() {
     const button = this.state.button ? <RandomChar/> : null
+    if (this.state.error) {
+      return <div className='error-app'><ErrorMessage/></div>
+    }
 
     return (
       <> 
@@ -28,19 +38,12 @@ export default class App extends React.Component{
         </Container>
         <Container>
           <Row>
-            <Col lg={{size: 5, offset: 0}}>
+            <Col lg={{size: 6, offset: 0}}>
               {button}
-              <button onClick={this.onButton} className="button">Toggle character</button>
+              <button onClick={this.onButton} className="button">Toggle random character</button>
             </Col>
           </Row>
-          <Row>
-            <Col md='6'>
-              <ItemList />
-            </Col>
-            <Col md='6'>
-              <CharDetails />
-            </Col>
-          </Row>
+          <CharacterPage/>
         </Container>
       </>
     );

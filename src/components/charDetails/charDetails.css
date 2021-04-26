@@ -10,7 +10,7 @@
 }
 
 .select-error {
-  font-size: 26px;
-  text-align: center;
-  color: #fff;
+  border-radius: 0.25rem;
+  padding: 16.5px 25px;
+  background-color: #fff;
 }
