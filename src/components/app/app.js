@@ -2,12 +2,16 @@ import React from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header/header.js';
 import RandomChar from '../randomChar/randomChar.js';
-import CharacterPage from '../characterPage/characterPage.js';
+import CharacterPage from '../pages/characterPage.js';
 import ErrorMessage from '../errorMessage/errorMessage.js';
 import './app.css';
 
+// import HousesPage from '../pages/housesPage.js';
+// import BooksPage from '../pages/booksPage.js';
+
+
 export default class App extends React.Component{
-  
+
   state = {
     button: true,
     error: false
@@ -28,7 +32,7 @@ export default class App extends React.Component{
   render() {
     const button = this.state.button ? <RandomChar/> : null
     if (this.state.error) {
-      return <div className='error-app'><ErrorMessage/></div>
+      return <ErrorMessage/>
     }
 
     return (
@@ -43,7 +47,10 @@ export default class App extends React.Component{
               <button onClick={this.onButton} className="button">Toggle random character</button>
             </Col>
           </Row>
+
           <CharacterPage/>
+
+          <div className="footer"></div>
         </Container>
       </>
     );

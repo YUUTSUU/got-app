@@ -49,29 +49,29 @@ export default class RandomChar extends React.Component {
       return <Spinner/>
     }
     if (this.state.error) {
-      return <div className="random-block rounded"><ErrorMessage/></div>
+      return <ErrorMessage/>
     }
     const {name, gender, born, died, culture} = this.state.char; 
     
     return (
       <div className="random-block rounded">
-        <h4>Random Character: {name ? name : 'Нет данных'}</h4>
+        <h4>Random Character: {name ? name : 'There is no data'}</h4>
         <ul className="list-group list-group-flush">
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Gender </span>
-            <span>{gender ? gender : 'Нет данных'}</span>
+            <span>{gender ? gender : 'There is no data'}</span>
           </li>
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Born </span>
-            <span>{born ? born : 'Нет данных'}</span>
+            <span>{born ? born : 'There is no data'}</span>
           </li>
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Died </span>
-            <span>{died ? died : 'Нет данных'}</span>
+            <span>{died ? died : 'There is no data'}</span>
           </li>
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Culture </span>
-            <span>{culture ? culture : 'Нет данных'}</span>
+            <span>{culture ? culture : 'There is no data'}</span>
           </li>
         </ul>
       </div>

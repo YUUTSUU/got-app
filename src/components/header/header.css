@@ -1,0 +1,25 @@
+.header-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 24px;
+  color: #fff;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  color: #fff;
+}
+
+.header-links li {
+  margin-right: 20px;
+  font-size: 18px;
+}

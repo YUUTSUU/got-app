@@ -3,6 +3,7 @@ img {
 }
 
 .error {
+  margin-bottom: 35px;
   padding: 13px;
   color: #fff;
   background-color: rgb(37, 37, 37);

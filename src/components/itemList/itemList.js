@@ -1,32 +1,56 @@
 import React, {Component} from 'react';
 import './itemList.css';
-import gotService from '../../services/gotService.js'
 import Spinner from '../spinner/spinner';
+import ErrorMessage from '../errorMessage/errorMessage.js';
 
 export default class ItemList extends Component {
 
-  gotService = new gotService();
-
-  id = 0;
-
   state = {
-    charList: null
+    list: null,
+    loading: true,
+    error: false
   }
 
   componentDidMount() {
-    this.gotService.getAllCharacters()
-    .then((charList) => {
+    const {getData} = this.props;
+    getData()
+    .then((list) => {
       this.setState({
-        charList
+        list,
+        loading: false
       })
+    })
+    // .catch(() => {this.onError()})
+  }
+
+  componentDidCatch() {
+    this.setState({
+      list: null,
+      error: true
     })
   }
 
+  // onError = () => {
+  //   this.setState({
+  //     list: null,
+  //     error: true,
+  //     loading: false
+  //   })
+  // }
+
   renderItems(arr) {
     return arr.map((item, i) => {
-      const newItem = {...item, key: this.id++};
+
+      // return (
+      //   <li key={item.id} className="list-group-item" onClick={() => this.props.onSelected(item.id)}>
+      //     {item.name}
+      //   </li>
+      // )
+
+      const id = item.url.slice(49);
+      const newItem = {...item, key: id};
       return (
-        <li key={newItem.key} className="list-group-item" onClick={() =>this.props.onSelected(581 + i)}>
+        <li key={newItem.key} className="list-group-item" onClick={() => this.props.onSelected(newItem.key)}>
           {newItem.name}
         </li>
       )
@@ -34,13 +58,16 @@ export default class ItemList extends Component {
   }
 
   render() {
-    if(!this.state.charList) {
+    if(this.state.loading) {
       return <Spinner/>
     }
-    const items = this.renderItems(this.state.charList);
+    if (this.state.error) {
+      return <ErrorMessage/>
+    }
+    const items = this.renderItems(this.state.list);
 
     return (
-      <ul className="item-list list-group">
+      <ul className="item-list list-group list-scroll">
         {items}
       </ul>
     );

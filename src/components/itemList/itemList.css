@@ -1,4 +1,19 @@
 .item-list .list-group-item {
-  padding: 15.7px 20px;
   cursor: pointer;
+}
+
+.list-scroll {
+  overflow-y: scroll;
+  height: 283px;
+}
+
+.list-scroll::-webkit-scrollbar {
+  border-radius: 7px;
+  width: 7px;
+  background-color: rgba(255, 255, 255, 0.527);
+}
+
+.list-scroll::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: rgba(21, 6, 105, 0.89);
 }

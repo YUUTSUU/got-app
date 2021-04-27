@@ -4,7 +4,7 @@ export default class GotService {
     this._apiBase = 'https://www.anapioficeandfire.com/api';
   }
 
-  async getResource(url) {
+  getResource = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
     if(!res.ok) {
       throw new Error(`Could not fetch ${url}` + 
@@ -13,44 +13,61 @@ export default class GotService {
     return await res.json();
   }
   
-  async getAllCharacters() {
-    const res = await this.getResource('/characters?page=117&pageSize=5');
+  getAllCharacters = async () => {
+    const res = await this.getResource('/characters?page=2&pageSize=100');
+    // const res = await this.getResource('/characters/');
+
     return res.map(this._transformCharacter)
   }
-  async getCharacter(id) {
-    const char = await this.getResource(`/characters/${id}`);
+  getCharacter = async (id) => {
+    const char = await this.getResource(`/characters/${id}/`);
     return this._transformCharacter(char);
   }
 
-  async getAllHouses() {
-    const res = await this.getResource('/houses');
+  getAllHouses = async () => {
+    const res = await this.getResource('/houses?page=2&pageSize=100');
     return res.map(this._transformHouse);
   }
-  async getHouse(id) {
-    const house = await this.getResource(`/houses/${id}`);
+  getHouse = async (id) => {
+    const house = await this.getResource(`/houses/${id}/`);
     return this._transformHouse(house);
   }
 
-  async getAllBooks() {
-    const res = await this.getResource('/books');
+  getAllBooks = async () => {
+    const res = await this.getResource('/books?page=2&pageSize=100');
     return res.map(this._transformBook);
   }
-  async getBook(id) {
-    const book = await this.getResource(`/books/${id}`);
+  getBook = async (id) => {
+    const book = await this.getResource(`/books/${id}/`);
     return this._transformBook(book);
   }
 
-  _transformCharacter(char) {
+  // isData(data) {
+  //   if (data) {
+  //     return data
+  //   } else {
+  //     return 'There is no data'
+  //   }
+  // }
+
+  // _extractId = (item) => {
+  //   const idRegExp = /\/([0-100]*)$/;
+  //   return item.url.match(idRegExp)[1];
+  // }
+
+  _transformCharacter = (char) => {
     return {
+      // id: this._extractId(char),
       name: char.name,
       gender: char.gender,
       born: char.born,
       died: char.died,
-      culture: char.culture
+      culture: char.culture,
+      url: char.url
     }
   }
 
-  _transformHouse(house) {
+  _transformHouse = (house) => {
     return {
       name: house.name,
       region: house.region,
@@ -61,7 +78,7 @@ export default class GotService {
     }
   }
 
-  _transformBook(book) {
+  _transformBook = (book) => {
     return {
       name: book.name,
       numberOfPage: book.numberOfPage,
@@ -70,5 +87,3 @@ export default class GotService {
     }
   }
 }
-
-// export default GotService;
