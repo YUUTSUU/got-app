@@ -3,7 +3,7 @@ import './header.css';
 
 const Header = () => {
   return (
-    <>
+    <React.Fragment>
       <div className="header-block">
         <h3 className="header-title">
           <a href="1">Game of Thrones DB</a>
@@ -20,8 +20,8 @@ const Header = () => {
           </li>
         </ul>
       </div>
-    </>
-  );
-};
+    </React.Fragment>
+  )
+}
 
 export default Header;

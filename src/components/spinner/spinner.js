@@ -3,11 +3,13 @@ import './spinner.css';
 
 const Spinner = () => {
   return (
-    <div className="loadingio-spinner-spin-x3mmh1fyzl">
-      <div className="ldio-0kncccymvi1">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+    <React.Fragment>
+      <div className="loadingio-spinner">
+        <div className="ldio">
+          <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 
