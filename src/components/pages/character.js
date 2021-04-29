@@ -14,42 +14,37 @@ export default class Character extends React.Component {
 
   gotService = new gotService();
 
-  state = {selected: null, error: false}
+  state = {selected: null, error: false};
 
   componentDidCatch() {
-    this.setState({error: true})
+    this.setState({error: true});
   }
 
   onSelected = (key) => {
-    this.setState({selected: key})
+    this.setState({selected: key});
   }
 
-  renderList = () => {
-    return (
+  render() {
+    const {error, selected} = this.state;
+    if (error) {return <Error/>}
+
+    const list = (
       <List selected={this.onSelected} 
             getData={this.gotService.getAllCharacters} 
             label={item => `${item.name} - (${item.gender})`}/>
     )
-  }
 
-  renderDetail = () => {
-    const {selected} = this.state;
-    return (
+    const detail = (
       <Detail selected={selected} getData={this.gotService.getCharacter}>
-        <Field field='gender' label='Gender'/>
-        <Field field='born' label='Born'/>
-        <Field field='died' label='Died'/>
-        <Field field='culture' label='Culture'/>
+            <Field field='gender' label='Gender'/>
+            <Field field='born' label='Born'/>
+            <Field field='died' label='Died'/>
+            <Field field='culture' label='Culture'/>
       </Detail>
     )
-  }
-
-  render() {
-    const {error} = this.state;
-    if (error) {return <Error/>}
 
     return (
-      <Block list={this.renderList()} detail={this.renderDetail()}/>
+      <Block list={list} detail={detail}/>
     )
   }
 }

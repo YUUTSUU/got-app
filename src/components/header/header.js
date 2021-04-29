@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './header.css';
 
 const Header = () => {
@@ -6,17 +7,17 @@ const Header = () => {
     <React.Fragment>
       <div className="header-block">
         <h3 className="header-title">
-          <a href="1">Game of Thrones DB</a>
+          <Link to='/'>Game of Thrones DB</Link>
         </h3>
         <ul className="header-links">
           <li>
-            <a href="1">Characters</a>
+            <Link to="/characters">Characters</Link>
           </li>
           <li>
-            <a href="1">Houses</a>
+            <Link to="/houses">Houses</Link>
           </li>
           <li>
-            <a href="1">Books</a>   
+            <Link to="/books">Books</Link>   
           </li>
         </ul>
       </div>

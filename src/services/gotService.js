@@ -1,8 +1,5 @@
 export default class GotService {
-  constructor() {
-    this._apiBase = 'https://www.anapioficeandfire.com/api';
-  }
-
+  _apiBase = 'https://www.anapioficeandfire.com/api';
 
   getResource = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);

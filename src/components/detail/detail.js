@@ -28,16 +28,14 @@ export default class Detail extends React.Component {
     if (loading) {return <Spinner/>};
 
     const {name} = detail;
-    const children = this.props.children //fragment
-
+    const childrenField = this.props.children //fragment field
+    
     return (
       <React.Fragment>
         <div className="detail rounded">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-
-            {React.Children.map(children, child => React.cloneElement(child, {detail}))}
-            
+            {React.Children.map(childrenField, childItem => React.cloneElement(childItem, {detail}))}
           </ul>
         </div>
       </React.Fragment>

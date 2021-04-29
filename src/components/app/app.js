@@ -1,8 +1,8 @@
 import React from 'react';
 import {Col, Row, Container} from 'reactstrap';
+import {Route, Switch} from 'react-router-dom';
 
 import Header from '../header/header.js';
-import Footer from '../footer/footer.js';
 import Random from '../random/random.js';
 import Character from '../pages/character.js';
 import Houses from '../pages/houses.js';
@@ -10,8 +10,6 @@ import Books from '../pages/books.js';
 
 import Error from '../error/error.js';
 import './app.css';
-
-
 
 export default class App extends React.Component{
 
@@ -33,34 +31,24 @@ export default class App extends React.Component{
 
     return (
       <React.Fragment> 
-        <Container>
-          <Header />
-        </Container>
-
-        <Container>
-            <Row>
-              <Col lg={{size: 6, offset: 0}}>
-                {item}
-                <button onClick={this.onButton} className="button">Toggle random</button>
-              </Col>
-            </Row>
-        </Container>
-
-        <Container as = "<div>" className='wrapper'>
-          <Character/>
-        </Container>
-
-        <Container as = "<div>" className='wrapper'>
-          <Houses/>
-        </Container>
-
-        <Container as = "<div>" className='wrapper'>
-          <Books/>
-        </Container>
-
-        <Container>
-          <Footer/>
-        </Container>
+          <Container>
+              <Header />
+          </Container>
+          <Container>
+              <Row>
+                  <Col lg={{size: 6, offset: 0}}>
+                    {item}
+                    <button onClick={this.onButton} className="button">Toggle random</button>
+                  </Col>
+              </Row>
+          </Container>
+          <Container>
+              <Switch>
+                  <Route path='/characters' component={Character}/>
+                  <Route path='/houses' component={Houses}/>
+                  <Route path='/books' component={Books}/>
+              </Switch>
+          </Container>
       </React.Fragment>
     )
   }

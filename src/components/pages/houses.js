@@ -24,17 +24,17 @@ export default class Houses extends React.Component {
     this.setState({selected: key})
   }
 
-  renderList = () => {
-    return (
+  render() {
+    const {error, selected} = this.state;
+    if (error) {return <Error/>}
+
+    const list = (
       <List selected={this.onSelected}
             getData={this.gotService.getAllHouses}
             label={item => `${item.name} - (${item.region})`}/>
     )
-  }
 
-  renderDetail = () => {
-    const {selected} = this.state
-    return (
+    const detail = (
       <Detail selected={selected} getData={this.gotService.getHouse}>
         <Field field='region' label='Region'/>
         <Field field='words' label='Words'/>
@@ -43,14 +43,9 @@ export default class Houses extends React.Component {
         <Field field='ancestralWeapons' label='Ancestral weapons'/>
       </Detail>
     )
-  }
-
-  render() {
-    const {error} = this.state;
-    if (error) {return <Error/>}
 
     return (
-      <Block list={this.renderList()} detail={this.renderDetail()}/>
+      <Block list={list} detail={detail}/>
     )
   }
 }

@@ -23,31 +23,26 @@ export default class Books extends React.Component {
     this.setState({selected: key})
   }
 
-  renderList = () => {
-    return (
+  render() {
+    const {error, selected} = this.state;
+    if (error) {return <Error/>}
+
+    const list = (
       <List selected={this.onSelected}
             getData={this.gotService.getAllBooks}
             label={item => `${item.name} - (${item.released})`}/>
     )
-  }
 
-  renderDetail = () => {
-    const {selected} = this.state
-    return (
+    const detail = (
       <Detail selected={selected} getData={this.gotService.getBook}>
         <Field field='numberOfPage' label='Number of page'/>
         <Field field='publiser' label='Publiser'/>
         <Field field='released' label='Released'/>
       </Detail>
-      )
-  }
-
-  render() {
-    const {error} = this.state;
-    if (error) {return <Error/>}
+    )
 
     return (
-      <Block list={this.renderList()} detail={this.renderDetail()}/>
+      <Block list={list} detail={detail}/>
     )
   }
 }
