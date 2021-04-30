@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row} from 'reactstrap';
 
-export default class Block extends React.Component {
+export default class RowBlock extends React.Component {
   render() {
     const {list, detail} = this.props;
     return (

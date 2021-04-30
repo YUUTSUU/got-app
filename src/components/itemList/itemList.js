@@ -1,8 +1,8 @@
 import React from 'react';
 import Spinner from '../spinner/spinner';
-import './list.css';
+import './itemList.css';
 
-export default class List extends React.Component {
+export default class ItemList extends React.Component {
   state = {list: null, loading: true}
   
   componentDidMount() {

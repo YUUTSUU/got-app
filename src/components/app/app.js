@@ -1,53 +1,51 @@
 import React from 'react';
-import {Col, Row, Container} from 'reactstrap';
-import {Route, Switch} from 'react-router-dom';
+import {Container} from 'reactstrap';
+import {Route} from 'react-router-dom';
 
 import Header from '../header/header.js';
-import Random from '../random/random.js';
-import Character from '../pages/character.js';
-import Houses from '../pages/houses.js';
-import Books from '../pages/books.js';
+import RandomPage from '../pages/randomPage.js';
+import CharacterPage from '../pages/charactersPage.js';
+import HousesPage from '../pages/housesPage.js';
+import BooksPage from '../pages/booksPage.js';
 
-import Error from '../error/error.js';
+import ItemBook from '../itemPages/itemBook.js';
+
+import ErrorMessage from '../errorMessage/errorMessage';
+
 import './app.css';
 
 export default class App extends React.Component{
 
-  state = {random: true, error: false}
+  state = {error: false}
 
   componentDidCatch() {
     this.setState({error: true})
   }
 
-  onButton = () => {
-    const {random} = this.state;
-    this.setState({random: !random});
-  }
-
   render() {
-    const {error, random} = this.state;
-    const item = random ? <Random/> : null;
-    if (error) {return <Error/>}
+    const {error} = this.state;
+    if (error) {return <ErrorMessage/>}
 
     return (
       <React.Fragment> 
           <Container>
-              <Header />
+              <Header/>
           </Container>
           <Container>
-              <Row>
-                  <Col lg={{size: 6, offset: 0}}>
-                    {item}
-                    <button onClick={this.onButton} className="button">Toggle random</button>
-                  </Col>
-              </Row>
+                <Route path='/' component={RandomPage}/>
           </Container>
           <Container>
-              <Switch>
-                  <Route path='/characters' component={Character}/>
-                  <Route path='/houses' component={Houses}/>
-                  <Route path='/books' component={Books}/>
-              </Switch>
+            <Route path='/characters' exact component={CharacterPage}/>
+            <Route path='/houses' exact component={HousesPage}/>
+            <Route path='/books' exact component={BooksPage}/>
+
+            <Route path='/books/:number' 
+              render={ ({match}) => {
+                const {number} = match.params;
+                return <ItemBook selected={number}/>
+              }
+            }/> 
+            
           </Container>
       </React.Fragment>
     )

@@ -1,10 +1,10 @@
 import React from 'react';
 import gotService from '../../services/gotService.js'
 import Spinner from '../spinner/spinner.js';
-import Error from '../error/error.js';
-import './random.css';
+import ErrorMessage from '../errorMessage/errorMessage.js';
+import './itemRandom.css';
 
-export default class Random extends React.Component {
+export default class ItemRandom extends React.Component {
 
   gotService = new gotService();
 
@@ -37,7 +37,7 @@ export default class Random extends React.Component {
   render() {
     const {random, loading, error} = this.state;
     if (loading) {return <Spinner/>};
-    if (error) {return <Error/>};
+    if (error) {return <ErrorMessage/>};
     const {name, gender, born, died, culture} = random; 
     
     return (

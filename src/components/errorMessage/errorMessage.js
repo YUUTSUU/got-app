@@ -1,8 +1,8 @@
 import React from 'react';
 import img from './image.jpg';
-import './error.css';
+import './errorMessage.css';
 
-const Error = () => {
+const ErrorMessage = () => {
   return (
     <React.Fragment>
       <img src={img} alt='img'></img>
@@ -11,4 +11,4 @@ const Error = () => {
   )
 }
 
-export default Error;
+export default ErrorMessage;

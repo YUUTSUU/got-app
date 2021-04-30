@@ -7,9 +7,4 @@ import App from './components/app/app.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-ReactDOM.render(
-  <Router>
-    <App/>
-  </Router>, 
-  document.getElementById('root')
-  );
+ReactDOM.render(<Router><App/></Router>, document.getElementById('root'));

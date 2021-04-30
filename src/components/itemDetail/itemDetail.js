@@ -1,8 +1,8 @@
 import React from 'react';
 import Spinner from '../spinner/spinner.js';
-import './detail.css';
+import './itemDetail.css';
 
-export default class Detail extends React.Component {
+export default class ItemDetail extends React.Component {
   state = {detail: null, loading: null};
 
   componentDidMount() {
@@ -24,18 +24,18 @@ export default class Detail extends React.Component {
 
   render() {
     const {detail, loading} = this.state;
-    if (!detail) {return <div className="error">Please select a character</div>};
+    if (!detail) {return <div className="error">Please select</div>};
     if (loading) {return <Spinner/>};
 
     const {name} = detail;
-    const childrenField = this.props.children //fragment field
-    
+    const children = this.props.children //fragment field
+
     return (
       <React.Fragment>
         <div className="detail rounded">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            {React.Children.map(childrenField, childItem => React.cloneElement(childItem, {detail}))}
+            {React.Children.map(children, child => React.cloneElement(child, {detail}))}
           </ul>
         </div>
       </React.Fragment>
