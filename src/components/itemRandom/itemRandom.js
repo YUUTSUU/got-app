@@ -3,16 +3,26 @@ import gotService from '../../services/gotService.js'
 import Spinner from '../spinner/spinner.js';
 import ErrorMessage from '../errorMessage/errorMessage.js';
 import './itemRandom.css';
+import PropTypes from 'prop-types';
 
 export default class ItemRandom extends React.Component {
 
   gotService = new gotService();
 
   state = {random: null, loading: true, error: false};
+
+  static defaultProps = {
+    interval: 3000
+  }
+
+  static propTypes = {
+    interval: PropTypes.number
+  }
     
   componentDidMount() {
     this.updateRandom();
-    this.timer = setInterval(this.updateRandom, 3000);
+    const {interval} = this.props;
+    this.timer = setInterval(this.updateRandom, interval);
   }
 
   componentWillUnmount() {

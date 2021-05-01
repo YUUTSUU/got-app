@@ -12,7 +12,7 @@ export default class RandomPage extends React.Component {
 
   render() {
     const {random} = this.state;
-    const item = random ? <ItemRandom/> : null;
+    const item = random ? <ItemRandom /> : null;
 
     return (
       <Row>

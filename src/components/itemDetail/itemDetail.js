@@ -24,11 +24,11 @@ export default class ItemDetail extends React.Component {
 
   render() {
     const {detail, loading} = this.state;
-    if (!detail) {return <div className="error">Please select</div>};
+    if (!detail) {return <div className="error">Please select </div>};
     if (loading) {return <Spinner/>};
 
     const {name} = detail;
-    const children = this.props.children //fragment field
+    const {children} = this.props; //fragment field
 
     return (
       <React.Fragment>

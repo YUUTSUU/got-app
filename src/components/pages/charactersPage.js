@@ -30,8 +30,8 @@ export default class CharacterPage extends React.Component {
 
     const list = (
       <ItemList selected={this.onSelected} 
-            getData={this.gotService.getAllCharacters} 
-            label={item => `${item.name} - (${item.gender})`}/>
+                getData={this.gotService.getAllCharacters} 
+                label={item => `${item.name} - (${item.gender})`}/>
     )
 
     const detail = (
