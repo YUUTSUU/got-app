@@ -20,7 +20,6 @@ export default class ItemBook extends React.Component {
     if (error) {return <ErrorMessage/>}
     const {selected} = this.props;
 
-
     return (
       <React.Fragment>
         <Row>
@@ -36,5 +35,4 @@ export default class ItemBook extends React.Component {
       
     )
   }
-
 }

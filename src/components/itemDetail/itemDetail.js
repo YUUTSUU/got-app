@@ -28,7 +28,7 @@ export default class ItemDetail extends React.Component {
     if (loading) {return <Spinner/>};
 
     const {name} = detail;
-    const {children} = this.props; //fragment field
+    const {children} = this.props; //fragment children
 
     return (
       <React.Fragment>
