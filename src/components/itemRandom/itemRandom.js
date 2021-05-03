@@ -11,13 +11,8 @@ export default class ItemRandom extends React.Component {
 
   state = {random: null, loading: true, error: false};
 
-  static defaultProps = {
-    interval: 3000
-  }
-
-  static propTypes = {
-    interval: PropTypes.number
-  }
+  static defaultProps = {interval: 3000}
+  static propTypes = {interval: PropTypes.number}
     
   componentDidMount() {
     this.updateRandom();

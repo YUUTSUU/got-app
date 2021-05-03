@@ -9,7 +9,7 @@ export default class ItemBook extends React.Component {
 
   gotService = new gotService();
 
-  state = {error: false}
+  state = {error: false, loading: true}
 
   componentDidCatch() {
     this.setState({error: true})

@@ -27,7 +27,7 @@ class BooksPage extends React.Component {
           <Col md='6'>
             <ItemList selected={(key) => history.push(key)}
                       getData={this.gotService.getAllBooks}
-                      label={item => `${item.name} - (${item.released})`}/>
+                      label={item => item.name}/>
           </Col>
         </Row>
       </React.Fragment>      
