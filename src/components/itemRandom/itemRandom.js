@@ -9,7 +9,7 @@ export default class ItemRandom extends React.Component {
 
   gotService = new gotService();
 
-  state = {random: null, loading: true, error: false};
+  state = {random: {}, loading: true, error: false};
 
   static defaultProps = {interval: 3000}
   static propTypes = {interval: PropTypes.number}
@@ -25,7 +25,7 @@ export default class ItemRandom extends React.Component {
   }
 
   onRandom = (item) => {
-    this.setState({random: item, loading: false});
+    this.setState({random: {...item}, loading: false});
   }
 
   onError = () => {

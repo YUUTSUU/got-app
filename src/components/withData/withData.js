@@ -3,7 +3,7 @@ import Spinner from '../spinner/spinner';
 
 const withData = (View) => {
   return class extends React.Component {
-    state = {list: null, loading: true}
+    state = {list: [], loading: true}
   
     componentDidMount() {
       const {getData} = this.props;
